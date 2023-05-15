@@ -36,7 +36,7 @@ def plot_dev(scores, x_range=None):
     ax.set_ylim(*y_range)
     ax.set_xticks(np.arange(*x_range), minor=True)
     ax.set_yticks([])
-    ax.set_xlabel('点数', fontsize=16)
+    ax.set_xlabel('score', fontsize=16)
 
     plt.show()
 
@@ -73,8 +73,8 @@ def plot_var_interact(scores):
 
         ax.set_xlim(0, 100)
         ax.set_ylim(0, 100)
-        ax.set_xlabel('点数', fontsize=16)
-        ax.set_ylabel('点数', fontsize=16)
+        ax.set_xlabel('score', fontsize=16)
+        ax.set_ylabel('score', fontsize=16)
 
         ax.xaxis.set_major_locator(MultipleLocator(5))
         ax.xaxis.set_minor_locator(MultipleLocator(1))
@@ -132,7 +132,7 @@ def plot_std_interact(scores):
         ax.set_ylim(*y_range)
         ax.set_xticks(np.arange(*x_range), minor=True)
         ax.set_yticks([])
-        ax.set_xlabel('点数', fontsize=16)
+        ax.set_xlabel('score', fontsize=16)
 
         plt.show()
 
@@ -168,8 +168,8 @@ def plot_cov(en_scores, ma_scores, plot_squares=False):
 
     ax.set_xlim(*x_range)
     ax.set_ylim(*y_range)
-    ax.set_xlabel('英語の点数', fontsize=16)
-    ax.set_ylabel('数学の点数', fontsize=16)
+    ax.set_xlabel('english score', fontsize=16)
+    ax.set_ylabel('mathematics score', fontsize=16)
 
     ax.xaxis.set_minor_locator(MultipleLocator(1))
     ax.yaxis.set_minor_locator(MultipleLocator(1))
@@ -183,21 +183,21 @@ def plot_cov_interact(en_scores, ma_scores):
     x_range = (0, 100)
     y_range = (0, 100)
 
-    @interact(Aさんの英語=x_range, Aさんの数学=y_range,
-              Bさんの英語=x_range, Bさんの数学=y_range,
-              Cさんの英語=x_range, Cさんの数学=y_range,
-              Dさんの英語=x_range, Dさんの数学=y_range)
-    def plot(Aさんの英語=en_scores[0], Aさんの数学=ma_scores[0],
-             Bさんの英語=en_scores[1], Bさんの数学=ma_scores[1],
-             Cさんの英語=en_scores[2], Cさんの数学=ma_scores[2],
-             Dさんの英語=en_scores[3], Dさんの数学=ma_scores[3]):
+    @interact(A_english=x_range, A_mathematics=y_range,
+              B_english=x_range, B_mathematics=y_range,
+              C_english=x_range, C_mathematics=y_range,
+              D_english=x_range, D_mathematics=y_range)
+    def plot(A_english=en_scores[0], A_mathematics=ma_scores[0],
+             B_english=en_scores[1], B_mathematics=ma_scores[1],
+             C_english=en_scores[2], C_mathematics=ma_scores[2],
+             D_english=en_scores[3], D_mathematics=ma_scores[3]):
         fig = plt.figure(figsize=(10, 10))
         ax = fig.add_subplot(111)
         ax.grid(False)
 
         names = ['A', 'B', 'C', 'D']
-        en_scores = [Aさんの英語, Bさんの英語, Cさんの英語, Dさんの英語]
-        ma_scores = [Aさんの数学, Bさんの数学, Cさんの数学, Dさんの数学]
+        en_scores = [A_english, B_english, C_english, D_english]
+        ma_scores = [A_mathematics, B_mathematics, C_mathematics, D_mathematics]
         en_mean = np.mean(en_scores)
         ma_mean = np.mean(ma_scores)
 
@@ -217,8 +217,8 @@ def plot_cov_interact(en_scores, ma_scores):
 
         ax.set_xlim(0, 100)
         ax.set_ylim(0, 100)
-        ax.set_xlabel('英語の点数', fontsize=16)
-        ax.set_ylabel('数学の点数', fontsize=16)
+        ax.set_xlabel('english score', fontsize=16)
+        ax.set_ylabel('mathematics score', fontsize=16)
 
         ax.xaxis.set_major_locator(MultipleLocator(5))
         ax.xaxis.set_minor_locator(MultipleLocator(1))
